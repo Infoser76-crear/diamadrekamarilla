@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #ffe4ec;
+  transition: background 0.5s ease;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.container-letter {
+  position: relative;
+  width: 350px; /* Antes 400px o 300px */
+  height: 300px; /* Podés dejarlo o ajustarlo si el texto se ve corto */
+  background: #fff0f5;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: #e91e63;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transform-origin: top;
+  transition: transform 0.8s ease;
+  z-index: 3;
+}
+
+.cover.opened {
+  transform: rotateX(180deg);
+  z-index: 0; /* ¡Muy importante! Para que no tape el mensaje */
+}
+
+.heart {
+  font-size: 32px;
+  color: red;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.paper {
+  position: absolute;
+  top: 20px; /* Justo debajo del corazón */
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 220px; /* Un poquito más para aprovechar el nuevo ancho */
+}
+
+.container-letter.opened .paper {
+  opacity: 1;
+}
+
+.letter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: #e91e63;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 2;
+}
+
+.selector {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #aa0044;
+}
+
+.options {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#open {
+  background: #ff4081;
+  color: white;
+}
+
+#open:disabled {
+  background: #ffc1d6;
+  color: white;
+  cursor: not-allowed;
+}
+
+#close {
+  background: #e91e63;
+  color: white;
+}
+
+#close:disabled {
+  background: #f77ea7;
+  color: white;
+  cursor: not-allowed;
+}
